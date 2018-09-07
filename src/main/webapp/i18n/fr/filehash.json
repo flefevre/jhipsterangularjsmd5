@@ -1,0 +1,24 @@
+
+{
+    "jhipsterangularjsmd5App": {
+        "filehash" : {
+            "home": {
+                "title": "Filehashes",
+                "createLabel": "Créer un nouveau Filehash",
+                "createOrEditLabel": "Créer ou éditer un Filehash"
+            },
+            "created": "Un nouveau Filehash a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Filehash avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Filehash avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Filehash {{ id }} ?"
+            },
+            "detail": {
+                "title": "Filehash"
+            },
+            "name": "Name",
+            "hashOfFile": "Hash Of File",
+            "contentOfFile": "Content Of File"
+        }
+    }
+}

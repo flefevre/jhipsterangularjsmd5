@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-filehash-heading" jhiTranslate="jhipsterangularjsmd5App.filehash.home.createOrEditLabel">Create or edit a Filehash</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!filehash.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="filehash.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterangularjsmd5App.filehash.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="filehash.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterangularjsmd5App.filehash.hashOfFile" for="field_hashOfFile">Hash Of File</label>
+                    <input type="text" class="form-control" name="hashOfFile" id="field_hashOfFile"
+                        [(ngModel)]="filehash.hashOfFile" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterangularjsmd5App.filehash.contentOfFile" for="field_contentOfFile">Content Of File</label>
+                    <div>
+                        <div *ngIf="filehash.contentOfFile" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(filehash.contentOfFileContentType, filehash.contentOfFile)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{filehash.contentOfFileContentType}}, {{byteSize(filehash.contentOfFile)}}</span>
+                            <button type="button" (click)="filehash.contentOfFile=null;filehash.contentOfFileContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_contentOfFile" (change)="setFileData($event, filehash, 'contentOfFile', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="contentOfFile" id="field_contentOfFile"
+                        [(ngModel)]="filehash.contentOfFile" />
+                    <input type="hidden" class="form-control" name="contentOfFileContentType" id="field_contentOfFileContentType"
+                        [(ngModel)]="filehash.contentOfFileContentType" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

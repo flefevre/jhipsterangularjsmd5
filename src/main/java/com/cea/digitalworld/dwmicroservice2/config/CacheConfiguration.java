@@ -38,6 +38,7 @@ public class CacheConfiguration {
             cm.createCache(com.cea.digitalworld.dwmicroservice2.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.cea.digitalworld.dwmicroservice2.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.cea.digitalworld.dwmicroservice2.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.cea.digitalworld.dwmicroservice2.domain.Filehash.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

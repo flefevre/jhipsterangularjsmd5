@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="filehash">
+            <h2><span jhiTranslate="jhipsterangularjsmd5App.filehash.detail.title">Filehash</span> {{filehash.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterangularjsmd5App.filehash.name">Name</span></dt>
+                <dd>
+                    <span>{{filehash.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterangularjsmd5App.filehash.hashOfFile">Hash Of File</span></dt>
+                <dd>
+                    <span>{{filehash.hashOfFile}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterangularjsmd5App.filehash.contentOfFile">Content Of File</span></dt>
+                <dd>
+                    <div *ngIf="filehash.contentOfFile">
+                        <a (click)="openFile(filehash.contentOfFileContentType, filehash.contentOfFile)" jhiTranslate="entity.action.open">open</a>
+                        {{filehash.contentOfFileContentType}}, {{byteSize(filehash.contentOfFile)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/filehash', filehash.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
