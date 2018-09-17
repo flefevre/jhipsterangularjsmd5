@@ -7,6 +7,8 @@ import { JhiDataUtils } from 'ng-jhipster';
 import { IFilehash } from 'app/shared/model/filehash.model';
 import { FilehashService } from './filehash.service';
 
+import { Md5 } from 'ts-md5/dist/md5';
+
 @Component({
     selector: 'jhi-filehash-update',
     templateUrl: './filehash-update.component.html'
@@ -29,6 +31,7 @@ export class FilehashUpdateComponent implements OnInit {
     }
 
     openFile(contentType, field) {
+        const toto = Md5.hashAsciiStr('blah blah blah', true);
         return this.dataUtils.openFile(contentType, field);
     }
 
@@ -45,6 +48,9 @@ export class FilehashUpdateComponent implements OnInit {
         if (this.filehash.id !== undefined) {
             this.subscribeToSaveResponse(this.filehashService.update(this.filehash));
         } else {
+            console.log('azertyuiop' + this.filehash.contentOfFile);
+            const toto = '' + Md5.hashStr('toto' + this.filehash.contentOfFile);
+            this.filehash.hashOfFile = '' + toto;
             this.subscribeToSaveResponse(this.filehashService.create(this.filehash));
         }
     }
@@ -67,5 +73,7 @@ export class FilehashUpdateComponent implements OnInit {
 
     set filehash(filehash: IFilehash) {
         this._filehash = filehash;
+        const toto = Md5.hashAsciiStr('blah blah blah', false);
+        console.log(toto);
     }
 }

@@ -1,0 +1,11 @@
+// JDL definition for application 'jhipsterangularjsmd5' generated with command 'jhipster export-jdl'
+
+entity Filehash (filehash) {
+  name String,
+  hashOfFile String,
+  contentOfFile AnyBlob
+}
+dto Filehash with mapstruct
+paginate Filehash with infinite-scroll
+service Filehash with serviceImpl
+filter Filehash
